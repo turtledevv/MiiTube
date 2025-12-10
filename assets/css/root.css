@@ -42,7 +42,8 @@
 
 :root[data-theme="touchsomegrass"] {
     --text_defaultFont: 'Comic Sans MS', sans-serif;
-    --bg_src: url("/assets/img/grass.png") repeat;
+    --bg_src: url("/assets/img/grass.png");
+    --bg_rept: repeat;
 }
 
 :root[data-theme="ns2"] {

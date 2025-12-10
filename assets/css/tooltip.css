@@ -1,11 +1,5 @@
 @import url("root.css");
 
-.tooltip {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-}
-
 /* the actual bubble */
 .tooltip::after {
     font-family: var(--tooltip_font);
