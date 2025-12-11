@@ -97,5 +97,11 @@ export const videos = [
   { platform: "yt", id: "8uv7uIiD6cs", title: "Find Miitopia - Perilous Prairie Showcase", author: "Kobazco", type: "video"},
   { platform: "yt", id: "IQWhKhyf6Lg", title: "Midwest Speedfest 2024 - Find Mii II Both Quests", author: "Kobazco", type: "video"},
   { platform: "yt", id: "4HP70fjuCFY", title: "Slot Car Rivals All Courses", author: "Kobazco", type: "video"},
-  { platform: "yt", id: "_7csJLBcj88", title: "How to turn your phone into a Wii U phone pt.2", author: "JacaneU", type: "video"}
+  { platform: "yt", id: "_7csJLBcj88", title: "How to turn your phone into a Wii U phone pt.2", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "gdj6tga0AJw", title: "Miitube' s new update showcase", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "oMNmbWak6Xk", title: "blender animation test", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "XGxhb-lWDzM", title: "Moon-blender animation test", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "V0Bh5AkhhFs", title: "blender on my pc be liike-blender animation test", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "r90spJM5Bk8", title: "Miiverse on switch 2 UI concept", author: "JacaneU", type: "video"},
+  { platform: "yt", id: "PLZjmDHAsr6WNieqkf3Bc_zRBddImRJg6D", title: "Friendsgiving2025", author: "ngx3", type: "playlist", thumbnail: "https://i.ytimg.com/vi/LZQDU_y313s/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIrISCobDJakVxBdvFKMZClS6POw" }
 ];
