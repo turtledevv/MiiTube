@@ -1,5 +1,6 @@
 # Contributing to MiiTube
 > First off, thanks for helping out with this project. We appreciate everyone!
+And also, I'm not fixing this. It's most likely not the optimal way to do updates n stuff, but.. I don't really.. care. K?
 
 ---
 
