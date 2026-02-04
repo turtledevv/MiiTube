@@ -46,6 +46,19 @@
     --bg_rept: repeat;
 }
 
+:root[data-theme="transparent"] {
+    --text_color: white;
+    --bg_src: none;
+    --bg_anim: none;
+    --nav_background: rgba(255, 255, 255, 0.075);
+}
+
+:root[data-theme="defaultdark"] {
+    --text_color: white;
+    --bg_src: url("/assets/img/backgrounds/miitube-dark.png");
+    --nav_background: rgba(0, 0, 0, 0.521);
+}
+
 :root[data-theme="ns2"] {
     --text_color: black;
     --text_defaultFont: sans-serif;
@@ -268,16 +281,15 @@
     --videoBoxThumb_maskRept: no-repeat;
     --videoBoxThumb_maskMode: none;
 
-    --viewer_size: 1;
+    --viewer_size: 1.3;
 
     --videoBox_infoDirection: column;
 
-    --bg_src: url("/assets/img/backgrounds/miiverse.png");
-    --bg_anim: drift 60s linear infinite;
+    --bg_src: url("/assets/img/backgrounds/miitube.png");
+    --bg_anim: drift 90s linear infinite;
     --bg_rept: repeat;
-    --bg_blur: 100px;
     --bg_atchmnt: scroll;
-    --bg_size: auto;
+    --bg_size: 200px;
     --bg_pos: center;
 
     --button_bg: linear-gradient(180deg,rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.75) 20%, rgba(255, 255, 255, 0.7) 50%, rgba(235, 236, 252, 0.7) 90%, rgba(202, 229, 253, 0.8) 100%);
