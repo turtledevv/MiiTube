@@ -25,5 +25,53 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+const clickSfx = new Audio("/assets/sound/sfx/click.wav");
+clickSfx.preload = "auto";
+
+const toggleSfx = new Audio("/assets/sound/sfx/toggle.wav");
+toggleSfx.preload = "auto";
+
+const miscSfx = new Audio("/assets/sound/sfx/interaction.wav");
+miscSfx.preload = "auto";
+
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("button, .clicksfx");
+  const toggleThing = e.target.closest('input[type="checkbox"], .togglesfx');
+
+  // Get sfx volume (0-100) from cookie, default to 100
+  const savedSfxVolume = getCookie("sfxVolume");
+  const sfxVol = savedSfxVolume ? (Number(savedSfxVolume) / 100) : 1;
+  const volume = Math.max(0, Math.min(1, sfxVol));
+
+  const miscThing = e.target.closest('.miscsfx');
+  if (miscThing) {
+    miscSfx.volume = volume;
+    miscSfx.currentTime = 0;
+    miscSfx.play().catch(() => {});
+    return;
+  }
+
+  // Click sound
+  if (btn) {
+    if (btn.matches("button") && (btn.disabled || btn.classList.contains("disabled"))) return;
+
+    clickSfx.volume = volume;
+    clickSfx.currentTime = 0;
+    clickSfx.play().catch(() => {});
+    return;
+  }
+
+  // Toggle sound
+  if (toggleThing) {
+    toggleSfx.volume = volume;
+    toggleSfx.currentTime = 0;
+    toggleSfx.play().catch(() => {});
+  }
+});
+
+
+
+
 // Add more here later if needed
 // this file is added to all pages of the site btw

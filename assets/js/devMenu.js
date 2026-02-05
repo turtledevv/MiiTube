@@ -27,6 +27,7 @@ function toggleCSSDebug() {
 function createDevBadge(menu) {
   const badge = document.createElement('div');
   badge.id = 'devbadge';
+  badge.className = 'miscsfx';
   badge.setAttribute('aria-hidden', 'true');
   badge.textContent = '⋯';
   badge.tabIndex = -1;

@@ -123,10 +123,16 @@ main {
   transform: translateZ(0);
   opacity: 0.95;
   cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
 
+#devbadge:active {
+  transition: transform 0.1s ease-in-out;
+  transform: scale(1.1);
+}
 
 #devmenu {
+  transition: 0.2s ease-in-out;
   position: fixed;
   inset: var(--dev_menuPos);
   width: fit-content;
@@ -139,10 +145,11 @@ main {
   color: #222;
   z-index: 696721;
   display: none;
+  opacity: 0;
   flex-direction: column;
 }
 
-#devmenu.show { display: flex; }
+#devmenu.show { display: flex; opacity: 1; }
 
 #devmenu header {
   font-family: "Wii Sans", var(--text_defaultFont);
