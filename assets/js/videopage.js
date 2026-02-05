@@ -76,7 +76,7 @@ function createVideoBox(video) {
     // Full HTML
     const html = `
         <div class="video-box">
-            <a class="cover-container" href="/watch.html?id=${originalIndex}">
+            <a class="cover-container clicksfx" href="/watch.html?id=${originalIndex}">
                 <img class="cover" src="${getVideoThumbnail(video)}" alt="Thumbnail">
             </a>
             <div class="video-info">
