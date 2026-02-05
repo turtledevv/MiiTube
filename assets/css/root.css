@@ -44,6 +44,8 @@
     --text_defaultFont: 'Comic Sans MS', sans-serif;
     --bg_src: url("/assets/img/grass.png");
     --bg_rept: repeat;
+    --bg_size: auto;
+    --text_color: white;
 }
 
 :root[data-theme="transparent"] {
