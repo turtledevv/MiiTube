@@ -243,6 +243,17 @@
     --tooltip_font: 'Wii Sans';
 }
 
+:root[data-theme="performance"] {
+  --defaultDiv_bg: white;
+  --defaultDiv_filter: none;
+  --defaultDiv_shadow: none;
+  --bg_anim: none;
+  --bg_src: url("/assets/img/backgrounds/miiverse.png");
+  --button_bg: white;
+  --button_iconShadow: none;
+  --nav_iconBg: none;
+  --nav_background: none;
+}
 
 :root {
     --dev_menuPos: auto auto 60px 10px;
