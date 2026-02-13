@@ -10,7 +10,9 @@ console.log("welcome to miitube");
 
 (function() {
   checkCSSDebug();
-  initDevTools();
+  if (!window.SKIP_DEVTOOLS) {
+      initDevTools();
+  }
 })();
 
 window.addEventListener('DOMContentLoaded', () => {

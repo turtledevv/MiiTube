@@ -16,9 +16,9 @@
 // 2. Get the title.
 
 
-// 3. Get the author name. Please make sure that there is a .jpg in /assets/img/users/ that has the EXACT SAME NAME.
-//    For example: If you do {author: "JacaneU"}: in /assets/img/users, there needs to be "JacaneU.jpg".
-// p.s: IT NEEDS TO BE A ".jpg"! NOT A ".jpeg", NOT A "png", JUST A ".jpg"!!! IF it's any other format, simply convert it to .jpg
+// 3. Get the author name.
+// Make sure it's defined in users.js! By name, I mean SPECIFICALLY AND ONLY THE `username`. NOT NORMAL `name`. **`username`**.
+// If the author isn't defined, go ahead and add em' there.
 
 
 // 4. Is it a video or playlist?
@@ -103,5 +103,6 @@ export const videos = [
   { platform: "yt", id: "XGxhb-lWDzM", title: "Moon-blender animation test", author: "JacaneU", type: "video"},
   { platform: "yt", id: "V0Bh5AkhhFs", title: "blender on my pc be liike-blender animation test", author: "JacaneU", type: "video"},
   { platform: "yt", id: "r90spJM5Bk8", title: "Miiverse on switch 2 UI concept", author: "JacaneU", type: "video"},
-  { platform: "yt", id: "PLZjmDHAsr6WNieqkf3Bc_zRBddImRJg6D", title: "Friendsgiving2025", author: "ngx3", type: "playlist", thumbnail: "https://i.ytimg.com/vi/LZQDU_y313s/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIrISCobDJakVxBdvFKMZClS6POw" }
+  { platform: "yt", id: "1M2Q-b35F1g", title: "Casual Racing in Mario Kart Wii Retro Rewind", author: "andreas_gvctn", type: "video"},
+  { platform: "yt", id: "PLZjmDHAsr6WNieqkf3Bc_zRBddImRJg6D", title: "Friendsgiving 2025", author: "ngx3", type: "playlist", thumbnail: "https://i.ytimg.com/vi/LZQDU_y313s/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBIrISCobDJakVxBdvFKMZClS6POw" }
 ];
