@@ -96,6 +96,14 @@ export const users = [
         verified: true
     },
     {
+        name: "Andreas GVctn",
+        username: "@andreas_gvctn",
+        youtube: "https://www.youtube.com/@andreas_gvctn",
+        profilePic: "https://yt3.googleusercontent.com/5_ja7Wm7H4YmWaxUD1TnKPJcV2PxWL4ugToE3OezbUTK0otyU2Hyx5FE_Tp7utd2x3_HzYAb=s800-c-k-c0x00ffffff-no-rj",
+        description: "Hi there. I'll upload some gameplay videos whenever I feel like.",
+        verified: true
+    },
+    {
         name: "Jhon Doe",
         username: "@jhon_doe",
         youtube: "https://it.wikipedia.org/wiki/Test",
