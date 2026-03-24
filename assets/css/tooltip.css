@@ -1,62 +1,45 @@
 @import url("root.css");
 
-:root{
-    --tooltip-bg: #222;
-    --tooltip-color: #fff;
-    --tooltip-padding: 8px 12px;
-    --tooltip-radius: 8px;
-    --tooltip-delay: 150ms;
-    --tooltip-offset: 10px;
-    --arrow-size: 7px;
-}
-
-.tooltip {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Wii Sans', sans-serif;
-}
-
-/* tooltip bubble */
+/* the actual bubble */
 .tooltip::after {
+    font-family: var(--tooltip_font);
     content: attr(data-tooltip);
     position: absolute;
-    top: calc(100% + var(--tooltip-offset));
-    left: 50%;
+    inset: var(--tooltip_pos);
     transform: translateX(-50%) scale(0.97);
-    background: var(--tooltip-bg);
-    color: var(--tooltip-color);
-    padding: var(--tooltip-padding);
-    border-radius: var(--tooltip-radius);
+    background: var(--tooltip_bg);
+    color: var(--tooltip_color);
+    padding: var(--tooltip_padding);
+    border-radius: var(--tooltip_radius);
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity var(--tooltip-delay) ease, transform var(--tooltip-delay) ease;
+    transition: opacity var(--tooltip_delay) ease, transform var(--tooltip_delay) ease;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     z-index: 20;
 }
 
-/* tooltip arrow */
+/* arrow sht */
 .tooltip::before {
+    left: 50%;
     content: '';
     position: absolute;
-    top: calc(100% + var(--tooltip-offset) - calc(var(--arrow-size) - 1px));
-    left: 50%;
+    top: calc(100% + var(--tooltip_offset) - calc(var(--tooltip_arrowSize) - 1px));
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: var(--arrow-size) solid transparent;
-    border-right: var(--arrow-size) solid transparent;
-    border-bottom: var(--arrow-size) solid var(--tooltip-bg); /* arrow points up */
+    border-left: var(--tooltip_arrowSize) solid transparent;
+    border-right: var(--tooltip_arrowSize) solid transparent;
+    border-bottom: var(--tooltip_arrowSize) solid var(--tooltip_bg);
     opacity: 0;
-    transition: opacity var(--tooltip-delay) ease;
+    transition: opacity var(--tooltip_delay) ease;
     z-index: 19;
 }
 
 .tooltip:hover::after, .tooltip:hover::before {
-    opacity: 1;
+    opacity: var(--tooltip_arrowOpacity);
     transform: translateX(-50%) scale(1);
 }
 
-/* keep centered on smaller elements */
+/* keep centered on smaller stuffs */
 .tooltip[data-tooltip][aria-hidden="false"]::after { pointer-events: auto; }

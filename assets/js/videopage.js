@@ -1,4 +1,7 @@
-import { videos } from '/assets/data/videos.js';
+// sorry for the lack of comments later on in the file
+
+import { videos } from '/assets/data/videos.js'; // get the video list
+import { users } from '/assets/data/users.js';
 
 function getVideoThumbnail(video) {
   if(video.thumbnail) { // If the thumbnail is already provided, simply override and use this one
@@ -10,12 +13,14 @@ function getVideoThumbnail(video) {
 // for figurin out vid IDs and stuff
 const devMode = false;
 
+// this is for the "Recommended" sort.
 const recommendedVideos = [1, 8, 24, 17, 7, 15, 43, 27, 25, 34, 29, 20, 9, 13, 4, 23, 11];
 
 let currentSort = "recommended";
 let reverseOrder = false;
 
 function getSortedVideos() {
+    // this handles how things are sorted on the page
     let sorted = [...videos];
 
     switch (currentSort) {
@@ -55,46 +60,42 @@ function getSortedVideos() {
 
 function createVideoBox(video) {
     const originalIndex = videos.indexOf(video) + 1;
-    const box = document.createElement("div");
-    box.className = "video-box";
 
-    const link = document.createElement("a");
-    link.href = `/watch.html?id=${originalIndex}`;
+    // Determine author name
+    let user = users.find(u => u.username.substring(1) === video.author);
+    let authorName = user ? user.name : video.author;
 
-    const img = document.createElement("img");
-    img.src = getVideoThumbnail(video);
-    img.alt = "Thumbnail"
-    img.className = "cover";
-    link.appendChild(img);
+    // Playlist badge HTML
+    const playlistBadge = video.type === "playlist" 
+        ? `<br><span class="playlist-text">📂 Playlist</span>` 
+        : '';
 
-    box.appendChild(link);
+    // Dev mode extra info
+    const devInfo = devMode ? ` | ${originalIndex}` : '';
 
-    const titleDiv = document.createElement("div");
-    titleDiv.className = "video-title";
-    titleDiv.innerHTML = video.title;
+    // Full HTML
+    const html = `
+        <div class="video-box">
+            <a class="cover-container clicksfx" href="/watch.html?id=${originalIndex}">
+                <img class="cover" src="${getVideoThumbnail(video)}" alt="Thumbnail">
+            </a>
+            <div class="video-info">
+                <div class="video-title">
+                    ${video.title}${playlistBadge}
+                </div>
+                <div class="video-author">
+                    by ${authorName}${devInfo}
+                </div>
+            </div>
+        </div>
+    `;
 
-    if (video.type === "playlist") {
-        const playlistSpan = document.createElement("span");
-        playlistSpan.className = "playlist-text";
-        playlistSpan.textContent = "📂 Playlist";
-        titleDiv.innerHTML += "<br>";
-        titleDiv.appendChild(playlistSpan);
-    }
-
-    const authorDiv = document.createElement("div");
-    authorDiv.className = "video-author";
-
-    if (devMode) {
-        authorDiv.textContent = `by ${video.author} | ${originalIndex}`;
-    } else {
-        authorDiv.textContent = `by ${video.author}`;
-    }
-
-    box.appendChild(titleDiv);
-    box.appendChild(authorDiv);
-
-    return box;
+    // Convert HTML string to DOM element
+    const template = document.createElement('template');
+    template.innerHTML = html.trim();
+    return template.content.firstChild;
 }
+
 
 
 // render videos

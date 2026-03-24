@@ -1,0 +1,60 @@
+@import url("root.css");
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    background: var(--button_bg);
+    border-radius: 10px;
+    color: var(--button_txtColor);
+    border: var(--button_border);
+    font-weight: var(--button_fontWeight);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.24);
+    transition:
+        box-shadow 0.15s ease,
+        transform 0.15s ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.button span {
+    font-family: var(--text_symbolsFont);
+    text-shadow: var(--button_iconShadow);
+    font-size: large;
+}
+
+.button:active {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.192),
+                inset -2px -2px 5px rgba(255,255,255,0.8);
+    transform: scale(0.95)
+}
+
+.button.green span {
+    color: rgb(41, 216, 41);
+}
+
+.button.red span {
+    color: rgb(216, 41, 41);
+}
+
+.button.blue span {
+    color: rgb(41, 146, 216);
+}
+
+.button.gold span {
+    color: rgb(250, 214, 12);
+}
+
+.button.purple span {
+    color: rgb(155, 12, 250);
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}

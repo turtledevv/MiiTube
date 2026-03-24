@@ -7,17 +7,31 @@ main {
 
 #video-player {
     border-radius: 20px;
-    background: linear-gradient(to bottom, #50787b, #fff, #ebebeb, #b4e1e1);
+    /*background: linear-gradient(to bottom, #50787b, #fff, #ebebeb, #b4e1e1);
+    border: 3px solid #50787b;*/
+    background: var(--defaultDiv_bg);
+    border: var(--defaultDiv_border);
+    backdrop-filter: var(--defaultDiv_filter);
+    box-shadow: var(--defaultDiv_shadow);
+    color: var(--defaultDiv_textColor);
     width: fit-content;
     height: fit-content;
+    transform-origin: top;
+    transform: scale(var(--viewer_size));
     margin-top: 80px;
-    border: 3px solid #50787b;
 }
 
-#maininfo {
+#videometa {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+#videostats {
+    font-size: 10px;
+    color: gray;
+    margin-left: 5px;
+    margin-top: 4px;
 }
 
 #video-player iframe {
@@ -27,7 +41,7 @@ main {
 #video-info {
     padding: 10px;
     padding-left: 15px;
-    color: white;
+    color: var(--defaultDiv_textColor);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -38,23 +52,21 @@ main {
     border-radius: 50%;
     width: 50px;
     height: auto;
-    border: 2px solid black;
+    border: 2px solid var(--misc_accentColor);
 }
 
 #title {
-    color: black;
     font-size: large;
 }
 
 #author {
-    color: rgb(63, 63, 63);
+    color: var(--text_subColor);
     font-size: small;
 }
 
 #actions {
-    margin-right: 5px;
-}
-
-#actions button span {
-    font-family: var(--symbols-font)
+    margin-right: 6px;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
 }

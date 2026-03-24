@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page="manualView">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="/assets/css/manual.css">
 </head>
 <body class="viewer">
+  <audio autoplay id="bgm" src="/assets/sound/artur_menu_musik-artendo.mp3" preload="auto" loop></audio>
   <div id="content"></div>
-  <img id="return-btn" src="/assets/img/ui/black-return.png" alt="Return">
+  <div id="return-btn"></div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -33,8 +34,28 @@
     document.getElementById("return-btn").addEventListener("click", () => {
       history.back();
     });
+
+    if (`${encodeURIComponent(page)}` === `4`) {
+      const su = '/secret/34.html'; const ssq = '343434';
+
+      let bfr = '';
+      document.addEventListener('keydown', function(e) {
+          const el = document.activeElement;
+          if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
+          const k = e.key;
+          if (!k || k.length !== 1) return;
+
+          bfr += k.toLowerCase();
+          if (bfr.length > ssq.length) bfr = bfr.slice(-ssq.length);
+
+          if (bfr === ssq) {
+              window.location.href = su;
+          }
+      });
+    };
   </script>
 
   <script type="module" src="/assets/js/main.js"></script>
+  <script type="module" src="/assets/js/bgMusic.js"></script>
 </body>
 </html>

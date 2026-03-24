@@ -1,16 +1,25 @@
 import { videos } from '/assets/data/videos.js';
+import { users } from '/assets/data/users.js';
 
-function getEmbedLink(videoID) {
-  return `https://www.youtube.com/embed/${videoID}`;
+function getEmbedLink(videoID, videoPlatform) {
+  switch (videoPlatform) {
+    case "yt":
+      return `https://www.youtube.com/embed/${videoID}`;
+    case "od":
+      return `https://odysee.com/$/embed/${videoID}`;
+    case "vm":
+      return `https://player.vimeo.com/video/${videoID}`;
+    default:
+      console.error(`fatal: unknown video platform "${videoPlatform}"`);
+      return `data:text/html;charset=utf-8,<h1 style='color:red;'>Error</h1><p>unknown video platform "${videoPlatform}"</p>`;
+  }
 }
 
-// example usage:
-//    setVideo("https://example.com", "Title", "Turtledevv", "/assets/img/users/Turtledevv.jpg");
-function setVideo(url, title, author, profilePic) {
+function setVideo(url, title, authorName, profilePic) {
   const iframe = document.getElementById('video-embed');
   const titleText = document.getElementById('title');
   const authorText = document.getElementById('author');
-  const profileImg = document.getElementById('pfp')
+  const profileImg = document.getElementById('pfp');
 
   if (!iframe) {
     console.error("fatal: Cannot find #video-embed!");
@@ -22,39 +31,40 @@ function setVideo(url, title, author, profilePic) {
   }
 
   if (!profileImg) {
-    console.warn("fatal: Cannot find #profileImg element!");
+    console.warn("fatal: Cannot find #pfp element!");
   }
 
   iframe.src = url;
   profileImg.src = profilePic;
   titleText.textContent = title;
-  authorText.textContent = `by ${author}`;
+  authorText.textContent = `by ${authorName}`;
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    const videoID = params.get("id");
+  const params = new URLSearchParams(window.location.search);
+  const videoIDParam = params.get("id");
 
-    console.log(`fetching video w/ id ${videoID}`)
-    const video = videos[videoID - 1]
+  console.log(`fetching video w/ id ${videoIDParam}`);
+  const videoIndex = parseInt(videoIDParam, 10) - 1;
+  const video = videos[videoIndex];
 
-    if (video.type === "video") {
-        const embedLink = getEmbedLink(video.id);
-        const videoTitle = video.title;
-        const videoAuthor = video.author;
-        const authorPFP = `/assets/img/users/${videoAuthor}.jpg`;
+  if (!video) {
+    console.error("Video not found!");
+    return;
+  }
 
-        setVideo(embedLink, videoTitle, videoAuthor, authorPFP);
-    } else {
-        console.log("type is playlist, redirecting to youtube")
-        window.location.assign(`https://www.youtube.com/playlist?list=${video.id}`)
-    }
+  if (video.type === "video") {
+    const embedLink = getEmbedLink(video.id, video.platform);
+    const videoTitle = video.title;
 
+    // Look up the author by username now instead of name
+    const authorData = users.find(u => u.username === video.author);
+    const authorName = authorData ? authorData.name : video.author;
+    const authorPFP = authorData ? authorData.profilePic : `/assets/img/users/${video.author}.jpg`;
+
+    setVideo(embedLink, videoTitle, authorName, authorPFP);
+  } else {
+    console.log("type is playlist, redirecting to YouTube");
+    window.location.assign(`https://www.youtube.com/playlist?list=${video.id}`);
+  }
 });
-
-
-// <iframe width="560" height="315" src="https://www.youtube.com/embed/(videoID)"
-// title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
-// gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

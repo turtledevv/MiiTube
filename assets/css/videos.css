@@ -1,42 +1,70 @@
 @import url("root.css");
 
 .video-box {
-  width: 200px;
+  width: var(--videoBox_width);
   height: auto;
   border-radius: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ffffff9d;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  background: var(--videoBox_bg);
+  backdrop-filter: var(--videoBox_filter);
+  box-shadow: var(--videoBox_shadow);
   overflow: hidden;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
   padding-bottom: 8px;
+
+  content-visibility: auto;
+  contain-intrinsic-size: 200px 205px;
 }
+
+.video-box:hover {
+    transform: scale(1.1);
+}
+
 
 .video-title {
     margin-top: 10px;
     padding: 3px;
+    font-size: var(--videoBox_titleSize);
 }
 
 .playlist-text {
-    font-size: x-small;
-    color: rgb(65, 65, 65);
+    font-size: var(--videoBox_playlistSize);
+    color: var(--videoBox_playlistColor);
 }
 
 .video-author {
-    font-size: 0.9em;
-    color: #797979;
+    font-size: var(--videoBox_authorSize);
+    color: var(--videoBox_authorColor);
     margin-top: 4px;
 }
 
 .cover {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--videoBoxThumb_aspectRatio);
   object-fit: cover;
   object-position: center;
-  border-radius: 7px 7px 0 0;
+  border-radius: var(--videoBoxThumb_borderRadius);
   display: block;
+  transform: scale(1.01);
+
+  mask-image: var(--videoBoxThumb_mask);
+  mask-size: var(--videoBoxThumb_maskSize);
+  mask-repeat: var(--videoBoxThumb_maskRept);
+  mask-mode: var(--videoBoxThumb_maskMode);
+}
+
+.cover-container {
+    aspect-ratio: var(--videoBoxThumb_aspectRatio);
+    overflow: hidden;
+}
+
+.video-info {
+    display: flex;
+    flex-direction: var(--videoBox_infoDirection);
+    align-items: center;
 }
 
 #videos {
@@ -78,5 +106,5 @@
 #sort-controls select:focus {
     outline: none;
     border-color: #666;
-    box-shadow: 0 0 0 3px rgba(100, 149, 237, 0.3); /* subtle highlight */
+    box-shadow: 0 0 0 3px rgba(100, 149, 237, 0.3);
 }

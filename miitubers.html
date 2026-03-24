@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-page="watch">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="/assets/css/profiles.css">
     </head>
     <body>
+        <audio autoplay id="bgm" src="/assets/sound/take_a_break-m6.mp3" preload="auto" loop></audio>
+
         <main>
             <div class="title">
                 <img src="/assets/img/icons/miitubers.png" height="47px">
@@ -35,6 +37,7 @@
             const SECRET_SEQ = 'yahoo'; // what you have to type to activate the secret
             let buffer = '';
 
+            // .... i'm not going to even try to explain this :D
             document.addEventListener('keydown', function(e) {
                 const el = document.activeElement;
                 if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
@@ -50,5 +53,6 @@
             });
         </script>
         <script type="module" src="/assets/js/main.js"></script>
+        <script type="module" src="/assets/js/bgMusic.js"></script>
     </body>
 </html>
